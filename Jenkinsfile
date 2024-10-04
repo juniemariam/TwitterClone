@@ -1,10 +1,12 @@
 /* Requires the Docker Pipeline plugin */
 pipeline {
-    agent any
+    agent {
+        label 'windows'
+    }
     stages {
-        stage('Build') {
+        stage('Test') {
             steps {
-                bat 'set'
+                bat 'node --version'
             }
         }
     }

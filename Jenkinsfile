@@ -1,18 +1,13 @@
-/* Requires the Docker Pipeline plugin */
 pipeline {
     agent any
-    tools {
-        nodejs 'NodeJS 22.x'  // Specify the Node.js installation
+    options {
+        // Timeout counter starts AFTER agent is allocated
+        timeout(time: 1, unit: 'SECONDS')
     }
     stages {
-        stage('Install Node.js') {
+        stage('Example') {
             steps {
-                bat 'npm install'
-            }
-        }
-        stage('Test') {
-            steps {
-                bat 'node --version'
+                echo 'Hello World'
             }
         }
     }

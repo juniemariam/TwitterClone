@@ -1,12 +1,12 @@
 /* Requires the Docker Pipeline plugin */
 pipeline {
     agent {
-        label 'windows'
+        docker { image 'node:20.17.0-alpine3.20' }
     }
     stages {
         stage('Test') {
             steps {
-                bat 'node --version'
+                sh 'node --version'
             }
         }
     }

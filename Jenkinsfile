@@ -1,21 +1,20 @@
 /* Requires the Docker Pipeline plugin */
 pipeline {
-    agent {
-        label 'windows' // assuming you have a Windows agent
-    }
+    agent any  // Use any available agent
     stages {
         stage('Install Node.js') {
             steps {
-                bat 'npm install'
+                sh 'npm install'  // Replace 'bat' with 'sh' for Linux agents
             }
         }
         stage('Test') {
             steps {
-                bat 'node --version'
+                sh 'node --version'  // Replace 'bat' with 'sh' for Linux agents
             }
         }
     }
 }
+
 
 
 

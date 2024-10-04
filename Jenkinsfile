@@ -2,7 +2,7 @@
 pipeline {
     agent any
     tools {
-        nodejs 'NodeJS 14.x'  // Specify the Node.js installation
+        nodejs 'NodeJS 22.x'  // Specify the Node.js installation
     }
     stages {
         stage('Install Node.js') {

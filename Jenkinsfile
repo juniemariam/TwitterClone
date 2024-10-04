@@ -1,19 +1,20 @@
 /* Requires the Docker Pipeline plugin */
 pipeline {
     agent {
-        label 'windows' // assuming you have a Windows agent
+        docker {
+            image 'node:20.17.0-alpine3.20'
+            args '-v ${PWD}:/workspace -w /workspace'
+
+        }
     }
     stages {
-        stage('Install Node.js') {
-            steps {
-                bat 'npm install'
-            }
-        }
         stage('Test') {
             steps {
-                bat 'node --version'
+                sh 'node --version'
             }
         }
     }
 }
+
+
 

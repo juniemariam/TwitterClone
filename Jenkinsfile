@@ -1,15 +1,18 @@
 /* Requires the Docker Pipeline plugin */
 pipeline {
-    agent any  // Use any available agent
+    agent any
+    tools {
+        nodejs 'NodeJS 14.x'  // Specify the Node.js installation
+    }
     stages {
         stage('Install Node.js') {
             steps {
-                sh 'npm install'  // Replace 'bat' with 'sh' for Linux agents
+                bat 'npm install'
             }
         }
         stage('Test') {
             steps {
-                sh 'node --version'  // Replace 'bat' with 'sh' for Linux agents
+                bat 'node --version'
             }
         }
     }

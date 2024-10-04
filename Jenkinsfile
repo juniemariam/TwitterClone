@@ -1,15 +1,21 @@
 pipeline {
     agent any
+    
     stages {
         stage('Test') {
             steps {
-                sh './gradlew check'
+                echo 'Running tests...'
+                // Use bat for Windows to run the Gradle Wrapper
+                bat 'gradlew.bat check' // Change to 'gradlew check' if using WSL
             }
         }
     }
+
     post {
         always {
-            junit 'build/reports/**/*.xml'
+            echo 'Archiving test results...'
+            // Adjust the path if your reports are in a different location
+            junit '**/build/test-results/test/*.xml' // Default Gradle report path for tests
         }
     }
 }
